@@ -1,0 +1,79 @@
+import React, { useEffect, useState } from "react";
+
+function AddData() {
+    const [inputField , setInputField] = useState({
+        userID: '',
+        title: '',
+        detail: ''
+    })
+
+    const inputsHandler = (e) =>{
+        setInputField( {[e.target.name]: e.target.value} )
+    }
+
+  const handleSubmit = () => {
+
+    fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(inputField ),
+    }).then((result) => {
+      result.json().then((resp) => {
+        console.log("resp", resp);
+      });
+    }
+    
+    );
+    setInputField({userID:'',title:'',detail:''});
+  };
+
+  return (
+    <div className="App">
+      
+   <input 
+            type="text" 
+            name="userID" 
+            onChange={inputsHandler} 
+            placeholder="UserID" 
+            value={inputField.userID}/>
+            <br/>
+
+            <input 
+            type="text" 
+            name="title" 
+            onChange={inputsHandler} 
+            placeholder="Title" 
+            value={inputField.title}/>
+
+            <br/>
+
+            <textarea
+            name="detail" 
+            onChange={inputsHandler} 
+            placeholder="detail" 
+            value={inputField.detail}/>
+
+            <br/>
+      <br /> */}
+      <button onClick={handleSubmit}>Submit Data</button>
+      {/* <table>
+        <tr>
+          <th>UserID</th>
+          <th>Title</th>
+          <th>Body</th>
+        </tr>
+        <tr>
+          <td>{userID}</td>
+          <td>{title}</td>
+          <td>{detail}</td>
+        </tr>
+      </table> */}
+      
+    </div>
+  );
+}
+
+export default AddData;
