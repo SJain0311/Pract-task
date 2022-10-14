@@ -1,3 +1,8 @@
+* {
+  font-family: 'Poppins', sans-serif !important;
+/* font-family: 'Roboto', sans-serif !important; */
+}
+
 td, th {
   border: 1px solid #ddd;
   padding: 8px;
@@ -11,9 +16,4 @@ td, th {
   width: 40%;
   background: #f1f1f1;
   border-radius: 10;
-}
-.search-box
-{
-  padding: 5px;
-  
 }
